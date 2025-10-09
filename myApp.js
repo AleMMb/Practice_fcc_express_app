@@ -1,44 +1,14 @@
+const path = require("path");
+
 let express = require('express');
 let app = express();
 
+//midleware
+app.use("/public" , express.static(path.join(__dirname +'/public')));
 
 app.get("/", function(req, res) {
-  res.sendFile(__dirname + "/views/index.html");
+  res.sendFile(path.join(__dirname + "/views/index.html"));
 });
-
-
-
-console.log("Hello");
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
