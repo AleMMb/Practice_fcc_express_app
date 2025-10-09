@@ -5,6 +5,11 @@ let express = require('express');
 let app = express();
 
 //midleware
+app.use(function middleware(req, res, next) {
+  console.log(`${req.method} ${req.path} - ${req.ip}`);
+  next();
+});
+
 app.use("/public" , express.static(path.join(__dirname +'/public')));
 
 app.get("/", function(req, res) {
