@@ -25,6 +25,12 @@ app.get("/:word/echo", function(req, res) {
 });
 
 
+app.get("/name", function(req, res){
+  let firstName = req.query.first;
+  let lastName = req.query.last;
+  res.json({name: `${firstName} ${lastName}`});
+});
+
 app.get("/", function(req, res) {
   res.sendFile(path.join(__dirname + "/views/index.html"));
 });
