@@ -15,6 +15,12 @@ app.use("/public" , express.static(path.join(__dirname +'/public')));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
+app.post("/name", function(req, res) {
+  let firstName = req.body.first;
+  let lastName = req.body.last;
+  res.json({name: `${firstName} ${lastName}`});
+});
+
 app.get("/now", function(req, res, next) {
   req.time = new Date().toString();
   next();
