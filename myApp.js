@@ -1,4 +1,5 @@
 const path = require("path");
+const bodyParser = require("body-parser");
 require('dotenv').config();
 
 let express = require('express');
@@ -12,6 +13,8 @@ app.use(function middleware(req, res, next) {
 
 app.use("/public" , express.static(path.join(__dirname +'/public')));
 
+app.use(bodyParser.urlencoded({ extended: false }));
+
 app.get("/now", function(req, res, next) {
   req.time = new Date().toString();
   next();
@@ -23,6 +26,8 @@ app.get("/now", function(req, res, next) {
 app.get("/:word/echo", function(req, res) {
   res.json({echo: req.params.word});
 });
+
+
 
 
 app.get("/name", function(req, res){
